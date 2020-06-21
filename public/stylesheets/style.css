@@ -1,0 +1,17 @@
+:root {
+    background-color: rgb(255, 255, 255)
+}
+
+main {
+    padding: 50px;
+    background-color: rgb(255, 255, 255)
+}
+
+a {
+    color: rgb(93, 95, 218);
+}
+
+.navbar-title-h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}

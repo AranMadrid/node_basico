@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>
+        <%= title %>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="icon" href="/images/ico.jpg" type="image/jpg">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark " style="background-color: rgb(139, 39, 233);">
+        <a class="navbar-brand" href="/">
+        <img src="/images/ico.jpg" width="60" height="60" class="d-inline-block align-top" alt="<%= title %>">
+        <span class="navbar-title-h1"><%= title %></span>
+      </a>
+    </nav>
+
+
+    <main>
+
+        <% if (data.length > 0) { %>
+            <div class="card">
+
+                <div class="card-header text-center">
+                    <h5>Tag Name</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <% data.forEach(tag => { %>
+                        <li class="list-group-item">
+                            <%= tag %>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
+            <% } %>
+
+    </main>
+</body>
+
+</html>

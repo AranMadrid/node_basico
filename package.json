@@ -1,0 +1,24 @@
+{
+  "name": "nodepop",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./bin/www",
+    "dev": "cross-env PORT=3000 DEBUG=nodepop:* NODE_ENV=development nodemon ./bin/www",
+    "dev2": "cross-env PORT=4000 DEBUG=nodepop:* NODE_ENV=development nodemon ./bin/www",
+    "install-db": "node install-db.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cookie-parser": "~1.4.4",
+    "cross-env": "^7.0.2",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-validator": "^6.4.0",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.9.6",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.2"
+  }
+}

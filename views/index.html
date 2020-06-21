@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>
+        <%= title %>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="icon" href="/images/ico.jpg" type="image/jpg">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark " style="background-color: rgb(243, 132, 234);">
+        <a class="navbar-brand" href="#">
+        <img src="/images/ico.jpg" width="60" height="60" class="d-inline-block align-top" alt="<%= title %>">
+        <span class="navbar-title-h1"><%= title %></span>
+      </a>
+    </nav>
+
+
+    <main>
+
+        <% if (data[0].length > 0) { %>
+
+            <div class="row row-cols-1 row-cols-md-3">
+                <% data[0].forEach(ad => { %>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img src="/images/<%= ad.photo %>" class="card-img-top" alt="<%= ad.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= ad.name %>
+                                </h5>
+                                <p class="card-text">Price:
+                                    <%= ad.price %> &euro;</p>
+                                <p class="card-text">Type:
+                                    <%= ((ad.sell) ? 'Sell' : 'Buy') %>
+                                </p>
+                                <p class="card-text">Tags:
+                                    <%= ad.tags %>
+                                </p>
+                                <p class="card-text">
+                                    <%= ad.detail %>
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <% 
+              const dateUpdatedAt = new Date(ad.updatedAt);
+              const dateCreatedAt = new Date(ad.createdAt);
+              %>
+                                    <small class="text-muted">Last updated: <%= dateUpdatedAt.toDateString() %> - <%= dateUpdatedAt.getUTCHours() %>:<%= dateUpdatedAt.getUTCMinutes() %>:<%= dateUpdatedAt.getUTCSeconds() %></small>
+                                    <br />
+                                    <small class="text-muted">( Created at: <%= dateCreatedAt.toDateString() %> - <%= dateCreatedAt.getUTCHours() %>:<%= dateCreatedAt.getUTCMinutes() %>:<%= dateCreatedAt.getUTCSeconds() %> )</small>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+
+            <% } else { %>
+
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">No hay resultados para esa búsqueda.</h4>
+                    <hr>
+                    <p>por favor, verifique lo siguiente:</p>
+                    <p>&#149; el valor debe ser: verdadero o falso</p>
+                    <p>&#149; los tags pueden ser:
+                        <%= data[1] %>
+                    </p>
+                    <p>&#149; el valor puede ser:</p>
+                    <p>&nbsp;&nbsp;&nbsp;&#149; 'ExactPrice': price=100</p>
+                    <p>&nbsp;&nbsp;&nbsp;&#149; 'minPrice-maxPrice': price=0-500</p>
+                    <p>&nbsp;&nbsp;&nbsp;&#149; 'minPrice-': price=0-</p>
+                    <p>&nbsp;&nbsp;&nbsp;&#149; '-maxPrice': price=-500</p>
+                    <p>&#149; los separadores decimales '<strong>.</strong>': price=230.15</p>
+                </div>
+
+                <% } %>
+
+    </main>
+</body>
+
+</html>
